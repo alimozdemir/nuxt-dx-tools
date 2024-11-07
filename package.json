@@ -43,7 +43,10 @@
         },
         "nuxtDxTools.api.functions": {
           "type": "array",
-          "default": ["$fetch", "useFetch"],
+          "default": [
+            "$fetch",
+            "useFetch"
+          ],
           "description": "List of functions to be considered as nitro APIs."
         }
       }
@@ -76,7 +79,8 @@
     "esbuild": "^0.24.0",
     "eslint": "^9.13.0",
     "npm-run-all": "^4.1.5",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "scule": "^1.3.0"
   },
   "packageManager": "yarn@1.22.21"
 }

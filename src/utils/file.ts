@@ -52,7 +52,7 @@ export async function getFiles(path: string, ext: string) : Promise<Array<string
         await traverseFolders(itemPath);
       }
     }
-  }
+  };
 
   await traverseFolders(path);
 

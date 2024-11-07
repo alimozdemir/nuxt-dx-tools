@@ -19,12 +19,12 @@ export class ApiDefinitionProvider implements FunctionProvider {
       this.state.config.watch<Array<string>>('api.functions', (value) => {
         this.functions = value || [];
       })
-    )
+    );
   }
 
   async run(fn: FunctionResult): Promise<Location[] | undefined> {
     if (!this.state.nitroRoutes)
-      return;
+      {return;}
 
     const api = this.extractPath(fn);
     if (!api) {

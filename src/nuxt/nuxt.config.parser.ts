@@ -22,7 +22,7 @@ export class NuxtConfigParser {
 
     const defaultExport = findFunction(configFile, ['defineNuxtConfig']);
 
-    if (!defaultExport) return;
+    if (!defaultExport) {return;}
 
     this.parseExtends(defaultExport);
     
@@ -45,34 +45,34 @@ export class NuxtConfigParser {
   private parseFutureCompatibilityVersion(defineNuxtConfig: CallExpression) {
     const prop = findProperty(defineNuxtConfig.arguments[0], 'future');
     
-    if (!prop) return;
+    if (!prop) {return;}
 
     const futureObject = prop.getChildren().find(c => isObjectLiteralExpression(c));
     
-    if (!futureObject) return;
+    if (!futureObject) {return;}
 
     const version = findProperty(futureObject, 'compatibilityVersion');
 
-    if (!version) return;
+    if (!version) {return;}
 
     const value = version.getChildren().find(c => isNumericLiteral(c));
 
-    if (!value) return;
+    if (!value) {return;}
 
     const parsedValue = parseInt(value.text);
 
-    return parsedValue == 4 ? 4 : 3;
+    return parsedValue === 4 ? 4 : 3;
   }
 
 
   private parseExtends(defineNuxtConfig: CallExpression) {
     const prop = findProperty(defineNuxtConfig.arguments[0], 'extends');
 
-    if (!prop) return;
+    if (!prop) {return;}
 
     const value = prop.getChildren().find(c => isStringLiteral(c) || isArrayLiteralExpression(c));
     
-    if (!value) return;
+    if (!value) {return;}
 
     if (isStringLiteral(value)) {
       this.extends.push(value.text);

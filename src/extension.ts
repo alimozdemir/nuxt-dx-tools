@@ -5,6 +5,7 @@ import { ApiHoverProvider } from './hover/api.hover';
 import { MainProvider } from './definition/main';
 import { workspace, ExtensionContext, window, languages, DocumentSelector, Disposable } from 'vscode';
 import { NuxtProject } from './nuxt/nuxt.project';
+import { kebabCase } from "scule";
 
 const extensionName = 'Nuxt DX Tools';
 const extensionId = 'vscode-nuxt-dx-tools';
@@ -19,6 +20,10 @@ function getWorkspaceRoot(): string | undefined {
 }
 
 export function activate(context: ExtensionContext) {
+	console.log(kebabCase('mytest'));
+	console.log(kebabCase('mytest/more'));
+	console.log(kebabCase('mytestLeading'));
+
 	const state: State = {
 		commandCall: false,
 		config: new ConfigurationService(),

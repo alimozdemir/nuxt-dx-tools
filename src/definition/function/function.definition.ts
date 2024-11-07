@@ -26,7 +26,7 @@ export class FunctionDefinitionProvider {
 
     for (const provider of this.providers) {
       if (!provider.functions.includes(fn.name))
-        continue;
+        {continue;}
 
       this.state.log.appendLine(`Running ${fn.name} provider`);
 
