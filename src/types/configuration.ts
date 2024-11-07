@@ -1,0 +1,1 @@
+export type ConfigurationKey = 'api.functions' | 'api.hover.enable';

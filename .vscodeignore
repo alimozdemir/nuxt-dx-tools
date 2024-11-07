@@ -1,0 +1,7 @@
+# Exclude the playground folder
+playground/
+
+# You can also exclude other files and folders if needed
+node_modules/
+.vscode/
+test/
