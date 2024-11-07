@@ -13,7 +13,7 @@ export class FunctionDefinitionProvider {
   constructor(private state: State) {
     this.providers.push(
       new ApiDefinitionProvider(state),
-      // new MetaDefinitionProvider(state)
+      new MetaDefinitionProvider(state)
     );
   }
 

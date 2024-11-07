@@ -2,6 +2,12 @@
   <img src="assets/icon.png" alt="Nuxt DX Tools Icon" width="200"/>
 </p>
 
+<p align="center">
+<a href="https://marketplace.visualstudio.com/items?itemName=alimozdemir.vscode-nuxt-dx-tools" target="__blank"><img alt="Visual Studio Marketplace Version" src="https://img.shields.io/visual-studio-marketplace/v/alimozdemir.vscode-nuxt-dx-tools" /></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=alimozdemir.vscode-nuxt-dx-tools" target="__blank"><img alt="Visual Studio Marketplace Downloads" src="https://img.shields.io/visual-studio-marketplace/d/alimozdemir.vscode-nuxt-dx-tools"></a>
+
+</p>
+
 # Nuxt DX Tools
 
 A VSCode extension designed to enhance the developer experience for Nuxt projects by providing tools for auto-locating and navigating to auto-imported components, functions, routes and more.
