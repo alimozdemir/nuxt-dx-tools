@@ -1,12 +1,12 @@
 import { Location, Disposable, Range, Position, Uri } from "vscode";
-import { FunctionProvider } from "../../types/function.provider";
 import { isObjectLiteralExpression, isStringLiteral, ObjectLiteralExpression } from "typescript";
-import { State } from "../../types/state";
-import { normalizePath } from "../../api/normalize-path";
-import { ApiResult } from "../../types/api.result";
-import { nitroRoutesParser } from "../../api/nitro/nitro-routes.parser";
-import { FunctionResult } from "../../types/function.result";
-import { buildPath, findFile } from "../../utils/file";
+import { nitroRoutesParser } from "../api/nitro/nitro-routes.parser";
+import { normalizePath } from "../api/normalize-path";
+import { ApiResult } from "../types/api.result";
+import { FunctionProvider } from "../types/function.provider";
+import { FunctionResult } from "../types/function.result";
+import { State } from "../types/state";
+import { buildPath, findFile } from "../utils/file";
 
 export class ApiDefinitionProvider implements FunctionProvider {
   functions: string[];

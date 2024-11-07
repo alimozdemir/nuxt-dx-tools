@@ -1,9 +1,9 @@
-import { posix } from "path";
+import { posix, basename, extname } from "path";
 import { kebabCase } from "scule";
 
 export function nuxtLayoutPathToKey(layoutPath: string) {
   // Normalize the path to ensure consistency across different operating systems
-  const normalizedPath = posix.normalize(layoutPath);
+  const normalizedPath = basename(posix.normalize(layoutPath), extname(layoutPath));
   
   return kebabCase(normalizedPath);
 }

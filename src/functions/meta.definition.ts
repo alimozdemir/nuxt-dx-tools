@@ -1,10 +1,10 @@
 import { Location, Position, Range, Uri } from "vscode";
-import { FunctionProvider } from "../../types/function.provider";
-import { FunctionResult } from "../../types/function.result";
-import { State } from "../../types/state";
-import { findAssignment } from "../../utils/node";
 import { isIdentifier, isStringLiteral, PropertyAssignment } from "typescript";
-import { NuxtTraverser } from "../../nuxt/nuxt.traverser";
+import { NuxtTraverser } from "../nuxt/nuxt.traverser";
+import { FunctionProvider } from "../types/function.provider";
+import { FunctionResult } from "../types/function.result";
+import { State } from "../types/state";
+import { findAssignment } from "../utils/node";
 
 export class MetaDefinitionProvider implements FunctionProvider {
   functions: string[] = ['definePageMeta'];
@@ -50,8 +50,6 @@ export class MetaDefinitionProvider implements FunctionProvider {
     
     const layouts = this.traverser.getAllLayouts(this.state.nuxtProject!);
     
-    console.log(this.state.nuxtProject);
-
     const layout = layouts.find(l => l.key === key);
 
     return layout ? [{

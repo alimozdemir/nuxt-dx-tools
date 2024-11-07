@@ -5,6 +5,7 @@ import { ApiHoverProvider } from './hover/api.hover';
 import { MainProvider } from './definition/main';
 import { workspace, ExtensionContext, window, languages, DocumentSelector, Disposable } from 'vscode';
 import { NuxtProject } from './nuxt/nuxt.project';
+import { MainHoverProvider } from './hover/main';
 
 const extensionName = 'Nuxt DX Tools';
 const extensionId = 'vscode-nuxt-dx-tools';
@@ -65,7 +66,7 @@ export function activate(context: ExtensionContext) {
 
 	const definitionProvider = languages.registerDefinitionProvider(selectors, new MainProvider(state));
 
-	const hoverProvider = new ApiHoverProvider(state);
+	const hoverProvider = new MainHoverProvider(state);
 	let hover: Disposable | undefined;
 
 	if (state.config.get<boolean>('api.hover.enable')) {
