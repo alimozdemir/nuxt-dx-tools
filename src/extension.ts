@@ -6,6 +6,7 @@ import { MainProvider } from './definition/main';
 import { workspace, ExtensionContext, window, languages, DocumentSelector, Disposable } from 'vscode';
 import { NuxtProject } from './nuxt/nuxt.project';
 import { MainHoverProvider } from './hover/main';
+import { Watcher } from './watcher/watcher';
 
 const extensionName = 'Nuxt DX Tools';
 const extensionId = 'vscode-nuxt-dx-tools';
@@ -25,6 +26,7 @@ export function activate(context: ExtensionContext) {
 		commandCall: false,
 		config: new ConfigurationService(),
 		log: window.createOutputChannel(extensionName),
+		watcher: new Watcher(),
 		extensionId: extensionId,
 		extensionName
 	};
@@ -55,7 +57,7 @@ export function activate(context: ExtensionContext) {
 			state.nitroRoutes = state.nuxtDotFolder ? joinPath(state.nuxtDotFolder, nitroRoutes) : undefined;
 
 			if (state.nuxtFolder) {
-				state.nuxtProject = new NuxtProject(state.nuxtFolder);
+				state.nuxtProject = new NuxtProject(state.nuxtFolder, state.watcher);
 				state.nuxtProject.run();
 			}	
 			
