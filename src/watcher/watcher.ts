@@ -1,5 +1,4 @@
 import { Disposable, RelativePattern, Uri, workspace } from "vscode";
-import { joinPath } from "../utils/file";
 import { debounce } from "../utils/debounce";
 
 export class Watcher implements Disposable {
@@ -11,9 +10,10 @@ export class Watcher implements Disposable {
     recursive?: boolean,
     debounceWait?: number
   }) {
-    const pattern = options?.recursive ? joinPath(path, '**/*') : joinPath(path, '*');
+    const pattern = options?.recursive ? '**/*' : '*';
 
-    const watcher = workspace.createFileSystemWatcher(pattern, false, true, false);
+    const relativePattern = new RelativePattern(path, pattern);
+    const watcher = workspace.createFileSystemWatcher(relativePattern, false, true, false);
     
     // rename is actually delete and create operations, so by debouncing we can avoid duplicated operations
     let callbackFn = options?.debounceWait ? debounce(callback, options.debounceWait) : callback;
