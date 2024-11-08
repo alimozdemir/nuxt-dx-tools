@@ -72,11 +72,10 @@ export class NuxtProject {
           path: file.fullPath
         });
       }
-
-      console.log(this.layouts)
     }, {
       immediate: true,
-      recursive: true
+      recursive: true,
+      debounceWait: 200
     });
 
   }
