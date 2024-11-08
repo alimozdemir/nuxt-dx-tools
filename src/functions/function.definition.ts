@@ -1,11 +1,11 @@
 import { createSourceFile, ScriptTarget } from "typescript";
 import { TextDocument, Position, CancellationToken, Location } from "vscode";
-import { findAssignment, findFunctionNearest } from "../../utils/node";
 import { ApiDefinitionProvider } from "./api.definition";
-import { State } from "../../types/state";
-import { FunctionResult } from "../../types/function.result";
-import { FunctionProvider } from "../../types/function.provider";
 import { MetaDefinitionProvider } from "./meta.definition";
+import { FunctionProvider } from "../types/function.provider";
+import { FunctionResult } from "../types/function.result";
+import { State } from "../types/state";
+import { findFunctionNearest } from "../utils/node";
 
 export class FunctionDefinitionProvider {
   providers: FunctionProvider[] = [];
@@ -13,7 +13,7 @@ export class FunctionDefinitionProvider {
   constructor(private state: State) {
     this.providers.push(
       new ApiDefinitionProvider(state),
-      // new MetaDefinitionProvider(state)
+      new MetaDefinitionProvider(state)
     );
   }
 

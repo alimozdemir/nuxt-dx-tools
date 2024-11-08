@@ -2,8 +2,7 @@ import { CancellationToken, Definition, DefinitionLink, DefinitionProvider, Loca
 import { State } from "../types/state";
 import { dTsDefinitionProvider } from "./dTs.definition";
 import { defaultProvider } from "../utils/vscode.helper";
-import { ApiDefinitionProvider } from "./api.definition";
-import { FunctionDefinitionProvider } from "./function/function.definition";
+import { FunctionDefinitionProvider } from "../functions/function.definition";
 
 export class MainProvider implements DefinitionProvider {
 

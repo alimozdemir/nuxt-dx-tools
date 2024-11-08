@@ -1,11 +1,11 @@
 import { State } from './types/state';
 import { ConfigurationService, prompt } from './utils/configuration';
 import { getNuxtFolder, joinPath } from './utils/file';
-import { ApiHoverProvider } from './hover/api.hover';
 import { MainProvider } from './definition/main';
 import { workspace, ExtensionContext, window, languages, DocumentSelector, Disposable } from 'vscode';
 import { NuxtProject } from './nuxt/nuxt.project';
-import { kebabCase } from "scule";
+import { MainHoverProvider } from './hover/main';
+import { Watcher } from './watcher/watcher';
 
 const extensionName = 'Nuxt DX Tools';
 const extensionId = 'vscode-nuxt-dx-tools';
@@ -20,14 +20,12 @@ function getWorkspaceRoot(): string | undefined {
 }
 
 export function activate(context: ExtensionContext) {
-	console.log(kebabCase('mytest'));
-	console.log(kebabCase('mytest/more'));
-	console.log(kebabCase('mytestLeading'));
 
 	const state: State = {
 		commandCall: false,
 		config: new ConfigurationService(),
 		log: window.createOutputChannel(extensionName),
+		watcher: new Watcher(),
 		extensionId: extensionId,
 		extensionName
 	};
@@ -58,7 +56,7 @@ export function activate(context: ExtensionContext) {
 			state.nitroRoutes = state.nuxtDotFolder ? joinPath(state.nuxtDotFolder, nitroRoutes) : undefined;
 
 			if (state.nuxtFolder) {
-				state.nuxtProject = new NuxtProject(state.nuxtFolder);
+				state.nuxtProject = new NuxtProject(state.nuxtFolder, state.watcher);
 				state.nuxtProject.run();
 			}	
 			
@@ -69,7 +67,7 @@ export function activate(context: ExtensionContext) {
 
 	const definitionProvider = languages.registerDefinitionProvider(selectors, new MainProvider(state));
 
-	const hoverProvider = new ApiHoverProvider(state);
+	const hoverProvider = new MainHoverProvider(state);
 	let hover: Disposable | undefined;
 
 	if (state.config.get<boolean>('api.hover.enable')) {

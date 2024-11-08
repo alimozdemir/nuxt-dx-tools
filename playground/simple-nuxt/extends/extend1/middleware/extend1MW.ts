@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware((to, from) => {
-    // MY-MIDDLEWARE
+    // EXTEND1-MIDDLEWARE
     if (to.params.id === '1') {
       return abortNavigation()
     }

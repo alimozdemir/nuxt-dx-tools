@@ -1,6 +1,7 @@
 import { OutputChannel } from 'vscode';
 import { ConfigurationService } from '../utils/configuration';
 import { NuxtProject } from '../nuxt/nuxt.project';
+import { Watcher } from '../watcher/watcher';
 
 export interface State {
     commandCall: boolean;
@@ -12,6 +13,7 @@ export interface State {
     nuxtDotFolder?: string;
     nitroRoutes?: string;
     config: ConfigurationService;
+    watcher: Watcher;
 
     nuxtProject?: NuxtProject;
 }

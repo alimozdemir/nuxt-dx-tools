@@ -27,3 +27,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.2.0]
 
 - re-publish extenion under a new name
+
+## [1.3.0]
+
+- definePageMeta layout and middleware support for hover and definitions

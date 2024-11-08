@@ -1,4 +1,4 @@
-export interface NuxtLayout {
+export interface NuxtKeyFile {
   path: string,
   key: string
 }

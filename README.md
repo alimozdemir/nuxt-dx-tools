@@ -2,6 +2,12 @@
   <img src="assets/icon.png" alt="Nuxt DX Tools Icon" width="200"/>
 </p>
 
+<p align="center">
+<a href="https://marketplace.visualstudio.com/items?itemName=alimozdemir.vscode-nuxt-dx-tools" target="__blank"><img alt="Visual Studio Marketplace Version" src="https://img.shields.io/visual-studio-marketplace/v/alimozdemir.vscode-nuxt-dx-tools" /></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=alimozdemir.vscode-nuxt-dx-tools" target="__blank"><img alt="Visual Studio Marketplace Downloads" src="https://img.shields.io/visual-studio-marketplace/d/alimozdemir.vscode-nuxt-dx-tools"></a>
+
+</p>
+
 # Nuxt DX Tools
 
 A VSCode extension designed to enhance the developer experience for Nuxt projects by providing tools for auto-locating and navigating to auto-imported components, functions, routes and more.
@@ -48,6 +54,19 @@ The goal is to enhance the developer experience for Nuxt projects, making develo
     - Method: `index.{method}.ts`
     - Parameters: `[id].ts`
     - `**` wildcards (e.g. `[...slug].ts`, `[...].ts`)
+
+- **definePageMeta support**
+  - You will be able to navigate to definePageMeta **layout** and **middleware** assignments
+    <p align="center">
+      Layout
+      <img src="assets/meta-layout.png" alt="" />
+    </p>
+
+    <p align="center">
+      Middleware
+      <img src="assets/meta-middleware.png" alt="" />
+    </p>
+
 
 ## Configuration
 
@@ -128,8 +147,7 @@ We recommend to set `editor.gotoLocation.multipleDefinitions` to `goto` for bett
   </p>
 
 
-  ## Improvements
+  ## Possible Improvements
 
   - This extension can also support standalone nitro projects where just the backend.
-  - Nuxt Layout support
-  - Nuxt Middleware support
+  - References
