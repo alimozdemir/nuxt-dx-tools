@@ -18,11 +18,16 @@ jobs:
       with:
         node-version: 20.x
 
-    - run: yarn install
+    - uses: pnpm/action-setup@v4
+      name: Install pnpm
+      with:
+        version: 9
 
-    - run: yarn run package
+    - run: pnpm install
+
+    - run: pnpm package
 
     - name: Publish
-      run: yarn run deploy
+      run: pnpm deploy
       env:
         VSCE_PAT: ${{ secrets.VSCE_PAT }}
