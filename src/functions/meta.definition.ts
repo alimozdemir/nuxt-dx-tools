@@ -1,5 +1,5 @@
 import { Location, Position, Range, Uri } from "vscode";
-import { isIdentifier, isStringLiteral, PropertyAssignment } from "typescript";
+import { isArrayLiteralExpression, isIdentifier, isStringLiteral, PropertyAssignment, StringLiteral, SyntaxKind } from "typescript";
 import { NuxtTraverser } from "../nuxt/nuxt.traverser";
 import { FunctionProvider } from "../types/function.provider";
 import { FunctionResult } from "../types/function.result";
@@ -33,7 +33,7 @@ export class MetaDefinitionProvider implements FunctionProvider {
     if (identifier.text === 'layout') {
       return this.layout(fn, assignment);
     } else if (identifier.text === 'middleware') {
-
+      return this.middleware(fn, assignment);
     }
 
     return;
@@ -57,6 +57,39 @@ export class MetaDefinitionProvider implements FunctionProvider {
       range: new Range(new Position(0, 0), new Position(0, 0))
     }] : undefined;
   }
+
+  middleware(fn: FunctionResult, assignment: PropertyAssignment) : Location[] | undefined {
+    const singleValue = assignment.getChildren().find(c => isStringLiteral(c));
+
+    let key: string;
+
+    if (!singleValue) {
+      const arrayValue = assignment.getChildren().find(c => isArrayLiteralExpression(c));
+
+      if (arrayValue) {
+        const e = arrayValue.elements.find(c => isStringLiteral(c) && c.text === fn.focusedText);
+
+        if (e) {
+          key = (<StringLiteral>e).text;
+        } else {
+          return;
+        }
+      } else {
+        return;
+      }
+    } else {
+      key = singleValue.text;
+    }
+    
+    const middlewares = this.traverser.getAllMiddlewares(this.state.nuxtProject!);
+    const middleware = middlewares.find(l => l.key === key);
+
+    return middleware ? [{
+      uri: Uri.file(middleware.path),
+      range: new Range(new Position(0, 0), new Position(0, 0))
+    }] : undefined;
+  }
+
 
   dispose() {
   }

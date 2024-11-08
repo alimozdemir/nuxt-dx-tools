@@ -1,4 +1,3 @@
-import { CallExpression } from "typescript";
 import { Location, Disposable } from "vscode";
 import { FunctionResult } from "./function.result";
 

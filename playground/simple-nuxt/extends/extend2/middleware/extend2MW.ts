@@ -1,5 +1,5 @@
+// THIS SHOULD NOT BE DETECTABLE FROM NUXT SINCE IT IS VERSION 4
 export default defineNuxtRouteMiddleware((to, from) => {
-    // MY-MIDDLEWARE
     if (to.params.id === '1') {
       return abortNavigation()
     }
