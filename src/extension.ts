@@ -1,7 +1,6 @@
 import { State } from './types/state';
 import { ConfigurationService, prompt } from './utils/configuration';
 import { getNuxtFolder, joinPath } from './utils/file';
-import { ApiHoverProvider } from './hover/api.hover';
 import { MainProvider } from './definition/main';
 import { workspace, ExtensionContext, window, languages, DocumentSelector, Disposable } from 'vscode';
 import { NuxtProject } from './nuxt/nuxt.project';

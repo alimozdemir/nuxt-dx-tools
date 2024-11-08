@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Public Login Layout
 </script>
 
 <template>

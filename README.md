@@ -55,6 +55,19 @@ The goal is to enhance the developer experience for Nuxt projects, making develo
     - Parameters: `[id].ts`
     - `**` wildcards (e.g. `[...slug].ts`, `[...].ts`)
 
+- **definePageMeta support**
+  - You will be able to navigate to definePageMeta **layout** and **middleware** assignments
+    <p align="center">
+      Layout
+      <img src="assets/meta-layout.png" alt="" />
+    </p>
+
+    <p align="center">
+      Middleware
+      <img src="assets/meta-middleware.png" alt="" />
+    </p>
+
+
 ## Configuration
 
 We recommend to set `editor.gotoLocation.multipleDefinitions` to `goto` for better experience. By this, it will automatically navigate to the file.
@@ -134,8 +147,7 @@ We recommend to set `editor.gotoLocation.multipleDefinitions` to `goto` for bett
   </p>
 
 
-  ## Improvements
+  ## Possible Improvements
 
   - This extension can also support standalone nitro projects where just the backend.
-  - Nuxt Layout support
-  - Nuxt Middleware support
+  - References

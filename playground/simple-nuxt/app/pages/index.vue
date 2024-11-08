@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-    layout: 'data-login',
+    layout: 'public-login',
     middleware: ['my-middleware', 'extend1mw']
 });
 </script>
