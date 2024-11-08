@@ -21,7 +21,7 @@ export class NuxtProject {
   ext = {
     vue: '.vue',
     ts: '.ts'
-  }
+  };
 
   private nuxtConfig?: NuxtConfigParser;
 

@@ -65,7 +65,7 @@
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
     "test": "vscode-test",
-    "deploy": "vsce publish --pnpm"
+    "deploy": "vsce publish --no-dependencies"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.9",
