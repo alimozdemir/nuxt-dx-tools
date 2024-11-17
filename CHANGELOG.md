@@ -31,3 +31,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.3.0]
 
 - definePageMeta layout and middleware support for hover and definitions
+
+## [1.4.0]
+
+- $fetch.raw support

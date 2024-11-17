@@ -38,6 +38,13 @@ useFetch('/api/blog/' + id + '/my-blog-slug/and-more')
 const myFetch = $fetchSetup();
 
 myFetch('/api/myapi');
+
+$fetch.raw('/api/change');
+
+$fetch.raw('/api/change', {
+    method: 'POST',
+    body: JSON.stringify({ name: 'test' }),
+})
 </script>
 
 <template>

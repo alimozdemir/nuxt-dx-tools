@@ -10,16 +10,15 @@ export function findFunctionNearest(node: Node, offset?: number): CallExpression
   const findNode = (node: Node) => {
     if (offset) {
       if (offset >= node.getStart() && offset < node.getEnd()) {
-        if (isCallExpression(node) && isIdentifier(node.expression)) {
+        if (isCallExpression(node)) {
           foundNode = node;
           return;
         }
-  
         forEachChild(node, findNode);
       }
     }
     else {
-      if (isCallExpression(node) && isIdentifier(node.expression)) {
+      if (isCallExpression(node)) {
         foundNode = node;
         return;
       }

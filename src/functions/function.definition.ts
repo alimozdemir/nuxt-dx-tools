@@ -23,7 +23,6 @@ export class FunctionDefinitionProvider {
     if (!fn) {
       return;
     }
-
     for (const provider of this.providers) {
       if (!provider.functions.includes(fn.name))
         {continue;}

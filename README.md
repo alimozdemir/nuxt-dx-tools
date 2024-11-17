@@ -49,7 +49,7 @@ The goal is to enhance the developer experience for Nuxt projects, making develo
   - By default, Nitro provides excellent support for APIs, including IntelliSense and configuration based on API definitions. This extension enhances your development experience by helping you quickly locate and navigate to the corresponding API files.
 
   - Supported logics
-    - `$fetch` and `useFetch` are supported
+    - `$fetch`, `$fetch.raw` and `useFetch` are supported
     - For custom fetches (created by $fetch.create) see [Settings](#settings)
     - Method: `index.{method}.ts`
     - Parameters: `[id].ts`
@@ -135,7 +135,15 @@ We recommend to set `editor.gotoLocation.multipleDefinitions` to `goto` for bett
   $fetch("/api/blog/" + id + '/' + id)
 
   useFetch('/api/blog/' + id + '/my-blog-slug/and-more')
+
+  $fetch.raw('/api/change')
+
+  $fetch.raw('/api/change', {
+      method: 'POST',
+      body: JSON.stringify({ name: 'test' }),
+  })
   ```
+
   <p align="center">
     Hover
     <img src="assets/api-hover.png" alt="" />
