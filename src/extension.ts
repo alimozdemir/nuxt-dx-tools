@@ -1,5 +1,5 @@
 import { State } from './types/state';
-import { ConfigurationService, prompt } from './utils/configuration';
+import { ConfigurationService, prompt, reset } from './utils/configuration';
 import { getNuxtFolder, joinPath } from './utils/file';
 import { MainProvider } from './definition/main';
 import { workspace, ExtensionContext, window, languages, DocumentSelector, Disposable } from 'vscode';
@@ -42,9 +42,6 @@ export function activate(context: ExtensionContext) {
 
 	prompt(extensionName, context);
 
-	const config = workspace.getConfiguration();
-
-	config.update('editor.gotoLocation.multipleDefinitions', 'goto');
 	const workspaceRoot = getWorkspaceRoot();
 
 	if (workspaceRoot) {
@@ -95,5 +92,7 @@ export function activate(context: ExtensionContext) {
 
 // This method is called when your extension is deactivated
 export function deactivate() {
+	reset();
+	console.log('Configuration reseted!');
 	console.log(`Your extension "${extensionId}" is now deactivated!`);
 }

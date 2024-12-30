@@ -35,3 +35,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.4.0]
 
 - $fetch.raw support
+
+## [1.5.0]
+
+- Improve prompt for global and workspace logic

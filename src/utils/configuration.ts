@@ -1,4 +1,4 @@
-import { ExtensionContext, window, workspace, WorkspaceConfiguration, Disposable } from 'vscode';
+import { ExtensionContext, window, workspace, WorkspaceConfiguration, Disposable, ConfigurationTarget } from 'vscode';
 import { ConfigurationKey } from '../types/configuration';
 
 const multipleDefinitions = 'editor.gotoLocation.multipleDefinitions';
@@ -9,8 +9,8 @@ export async function prompt(name: string, e: ExtensionContext) {
 
   if (e.globalState.get(confirmSetting))
     {return;}
-
-  if (config.get(multipleDefinitions) === 'goto') {
+  
+  if (config.inspect(multipleDefinitions)?.globalValue === 'goto' || config.get(multipleDefinitions) === 'goto') {
     return;
   }
 
@@ -20,15 +20,23 @@ export async function prompt(name: string, e: ExtensionContext) {
     We recommend you to set ${multipleDefinitions} to 'goto' for better experience
     Click OK to set it now.
     `,
-    'OK',
-    'Not now'
+    'OK (global)',
+    'OK (workspace)',
+    'Never show again'
   );
-
-  if (response === 'OK') {
+  
+  if (response === 'OK (workspace)') {
     await config.update(multipleDefinitions, 'goto');
+  } else if (response === 'OK (global)') {
+    await config.update(multipleDefinitions, 'goto', ConfigurationTarget.Global);
+  } else if (response === 'Never show again') {
+    e.globalState.update(confirmSetting, true);
   }
+}
 
-  e.globalState.update(confirmSetting, true);
+export async function reset() {
+  const config = workspace.getConfiguration();
+  config.update(confirmSetting, false);
 }
 
 const key = 'nuxtDxTools';
