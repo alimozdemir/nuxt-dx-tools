@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "alwaysStrict": true,
+    "moduleResolution": "node",
+    "target": "ES6",
+    "module": "commonjs",
+    "outDir": "lib",
+    "declaration": true,
+    "sourceMap": true,
+    "esModuleInterop": true
+  },
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
+}

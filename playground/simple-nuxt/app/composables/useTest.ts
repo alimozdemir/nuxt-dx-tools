@@ -4,6 +4,9 @@ export function useTest() {
 }
 
 export const useText = () => {
+
+    $fetchSetup();
+
     $fetch('/api/change')
 
     $fetch('/api/change', {

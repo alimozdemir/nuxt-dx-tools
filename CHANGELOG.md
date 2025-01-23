@@ -39,3 +39,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.5.0]
 
 - Improve prompt for global and workspace logic
+
+## [1.6.0]
+
+- Experimental: TS Language Server plugin for managing multiple definitions (if this truly works with volar, we can disable the "multidefinition" config)

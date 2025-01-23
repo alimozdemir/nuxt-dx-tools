@@ -3,7 +3,7 @@
   "name": "vscode-nuxt-dx-tools",
   "displayName": "Nuxt DX Tools",
   "description": "A VSCode extension designed to enhance the developer experience for Nuxt projects by providing tools for auto-locating and navigating to auto-imported components, functions, routes and more.",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "homepage": "https://github.com/alimozdemir/vscode-nuxt-dx-tools#readme",
   "repository": {
     "type": "git",
@@ -33,6 +33,12 @@
   "main": "./dist/extension.js",
   "icon": "assets/icon.png",
   "contributes": {
+    "typescriptServerPlugins": [
+      {
+        "name": "nuxt-dx-tools-plugin",
+        "enableForWorkspaceTypeScriptVersions": true
+      }
+    ],
     "configuration": {
       "title": "Nuxt DX Tools",
       "properties": {
@@ -81,7 +87,12 @@
     "eslint": "^9.13.0",
     "npm-run-all": "^4.1.5",
     "scule": "^1.3.0",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
+
+  "dependencies": {
+    "nuxt-dx-tools-plugin": "^1.0.5"
+  },
+
   "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
 }
