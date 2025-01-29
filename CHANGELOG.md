@@ -39,3 +39,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.5.0]
 
 - Improve prompt for global and workspace logic
+
+## [1.5.1]
+
+- Fix 'Go to definition' issue https://github.com/alimozdemir/vscode-nuxt-dx-tools/issues/4

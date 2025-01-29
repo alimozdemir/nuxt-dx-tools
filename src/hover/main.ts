@@ -33,7 +33,7 @@ export class MainHoverProvider implements HoverProvider {
       md.appendMarkdown(`...  \n`);
     }
 
-    md.appendMarkdown(`[Go to definition](${loc.uri.fsPath})`);
+    md.appendMarkdown(`[Go to definition](${loc.uri.path})`);
 
     return md;
   }
